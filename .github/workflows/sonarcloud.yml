@@ -1,10 +1,18 @@
-name: SonarCloud
+name: SonarCloud analysis
+
 on:
   push:
     branches:
       - main
+      - 5-aceptar-solicitudes-servicio
   pull_request:
-    types: [opened, synchronize, reopened]
+    branches:
+      - main
+      - 5-aceptar-solicitudes-servicio
+
+permissions:
+  pull-requests: read # allows SonarCloud to decorate PRs with analysis results
+
 jobs:
   build:
     name: Build and analyze
@@ -30,9 +38,20 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-      - name: Build and analyze
+
+      - name: Build and Test with Maven
+        run: mvn -B -e verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=CodeF-ctory2023_back -Dsonar.organization=codef-ctory2023
+
+      - name: Run JaCoCo for coverage
+        run: mvn test jacoco:report
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@de2e56b42aa84d0b1c5b622644ac17e505c9a049
         env:
           secrets: inherit
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: "CodeF-ctory2023TOKEN"
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=CodeF-ctory2023_back
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}    # DONE: Generate a token on Sonarcloud.io, add it to the secrets of this repo with the name SONAR_TOKEN (Settings > Secrets > Actions > add new repository secret)
+        with:
+          args: 
+            -Dsonar.projectKey=CodeF-ctory2023_back
+            -Dsonar.organization=codef-ctory2023
