@@ -40,7 +40,7 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
 
       - name: Build and Test with Maven
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=codeF-ctory2023_back -Dsonar.organization=CodeF-ctory2023_back
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=CodeF-ctory2023_back -Dsonar.organization=codef-ctory2023
 
       - name: Run JaCoCo for coverage
         run: mvn test jacoco:report
@@ -52,5 +52,5 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}    # Generate a token on Sonarcloud.io, add it to the secrets of this repo with the name SONAR_TOKEN (Settings > Secrets > Actions > add new repository secret)
         with:
           args: 
-            -Dsonar.projectKey=codef-ctory2023
-            -Dsonar.organization=CodeF-ctory2023_back
+            -Dsonar.projectKey=CodeF-ctory2023_back
+            -Dsonar.organization=codef-ctory2023
