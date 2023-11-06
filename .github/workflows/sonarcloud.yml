@@ -39,12 +39,18 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
+      - name: Build and Test with Maven
+        run: mvn -B -e verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=CodeF-ctory2023_back -Dsonar.organization=codef-ctory2023 -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+
       - name: Run JaCoCo for coverage
         run: mvn test jacoco:report
 
-      - name: Build, test and scan with Maven/SonarCloud
+      - name: SonarCloud Scan SETUP
         env:
           secrets: inherit
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B -e verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=CodeF-ctory2023_back -Dsonar.organization=codef-ctory2023 -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}    # DONE: Generate a token on Sonarcloud.io, add it to the secrets of this repo with the name SONAR_TOKEN (Settings > Secrets > Actions > add new repository secret)
+        with:
+          args: 
+            -Dsonar.projectKey=CodeF-ctory2023_back
+            -Dsonar.organization=codef-ctory2023
