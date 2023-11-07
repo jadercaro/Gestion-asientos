@@ -6,6 +6,8 @@ on:
       - main
       - 5-aceptar-solicitudes-servicio
       - Seguridad
+      - branche-*
+      - feature-*
   pull_request:
     branches:
       - main
