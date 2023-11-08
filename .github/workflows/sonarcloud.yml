@@ -7,6 +7,7 @@ on:
       - 5-aceptar-solicitudes-servicio
       - Seguridad
       - Gestion_Socios
+      - 7-monitoreo-2
       - branch-*
       - feature-*
   pull_request:
@@ -15,6 +16,7 @@ on:
       - 5-aceptar-solicitudes-servicio
       - Seguridad
       - Gestion_Socios
+      - 7-monitoreo-2
 
 permissions:
   pull-requests: read # allows SonarCloud to decorate PRs with analysis results
