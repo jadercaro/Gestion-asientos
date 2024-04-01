@@ -7,19 +7,19 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.1.2</version>
+		<version>3.2.3</version>
 		<relativePath/>
 		<!-- lookup parent from repository -->
 	</parent>
 	<groupId>co.udea</groupId>
-	<artifactId>ssmu-api</artifactId>
+	<artifactId>airline-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ssmu-api</name>
-	<description>ssmu-api</description>
+	<name>airline-api</name>
+	<description>airline-api</description>
 	<properties>
 		<java.version>17</java.version>
-		<sonar.projectKey>CodeF-ctory2023_back</sonar.projectKey>
-		<sonar.organization>codef-ctory2023</sonar.organization>
+		<sonar.projectKey>CodeFactory2024_back</sonar.projectKey>
+		<sonar.organization>codefactory2024</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<!-- other properties here compas-->
 	</properties>
@@ -43,17 +43,23 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.tomcat</groupId>
-			<artifactId>tomcat-servlet-api</artifactId>
-			<version>9.0.21</version>
-			<scope>provided</scope>
-		</dependency>
+
+		<!--
+
+                <dependency>
+                    <groupId>com.oracle.database.jdbc</groupId>
+                    <artifactId>ojdbc8</artifactId>
+                    <version>19.3.0.0</version>
+
+                </dependency>
+
+
+                <dependency>
+                    <groupId>org.apache.tomcat</groupId>
+                    <artifactId>tomcat-servlet-api</artifactId>
+                    <version>9.0.21</version>
+                    <scope>provided</scope>
+                </dependency>-->
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>

@@ -5,7 +5,7 @@ FROM openjdk:20-jdk-slim
 WORKDIR /app
 
 # Copia el archivo JAR de tu proyecto Spring Boot al contenedor
-COPY target/ssmu-api-0.0.1-SNAPSHOT.jar app.jar
+COPY target/airline-api-0.0.1-SNAPSHOT.jar app.jar
 
 # Expone el puerto 8080 que utiliza Spring Boot
 EXPOSE 8080

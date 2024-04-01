@@ -1,4 +1,4 @@
-# SSMU-API
+# AIRLINE-API
 
 [Spring Boot](http://projects.spring.io/spring-boot/) application [3.1.2](https://spring.io/blog/2023/07/20/spring-boot-3-1-2-available-now)
 
@@ -11,7 +11,7 @@ Para construir y ejecutar la aplicación necesita:
 
 ## Ejecutando la aplicación localmente
 
-Hay varias formas de ejecutar una aplicación Spring Boot en su máquina local. Una forma es ejecutar el método `main` en la clase `co.udea.ssmu.api.SsmuApiApplication` desde su IDE.
+Hay varias formas de ejecutar una aplicación Spring Boot en su máquina local. Una forma es ejecutar el método `main` en la clase `co.udea.airline.api.AirlineApiApplication` desde su IDE.
 
 Alternativamente, puedes usar el [Plugin de Spring Boot Maven](https://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-maven-plugin.html) de esta manera:
 ```shell

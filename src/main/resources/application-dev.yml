@@ -6,7 +6,7 @@ spring:
     properties:
       hibernate:
         order_inserts: true
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+        dialect: org.hibernate.dialect.Oracle12cDialect
         jdbc:
           batch_size: 50
           lob:
@@ -17,20 +17,17 @@ spring:
 
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5432/ssmu-dev?serverTimezone=America/Bogota
+    url: jdbc:oracle:thin://localhost:1521/airline-dev?serverTimezone=America/Bogota
     username: username
     password: password
     hikari:
       idle-timeout: 10000
       maximum-pool-size: 5
-
-  messages:
-    basename: bundles/apiLanguageBundle
-
-ssmu-api:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+airline-api:
   openapi:
-    dev-url: http://localhost:8080/ssmu-api
-    prod-url: https://ssmu-api.com
+    dev-url: http://localhost:8080/airline-api
+    prod-url: https://airline-api.com
 
 logging:
   level:
