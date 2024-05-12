@@ -8,5 +8,5 @@ public interface ISeatService {
     //Seat save(Seat s);
     //Seat update(Seat seat);
     Optional<Seat> findSeatById(Long id);
-    
+
 }

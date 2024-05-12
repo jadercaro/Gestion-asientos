@@ -27,6 +27,10 @@ public class Seat {
     @NotNull
     @Column(name = "location")
     private SeatLocationEnum location;
+
+    @NotNull
+    @Column(name = "surcharge")
+    private int surcharge = 0;
 }
 
 

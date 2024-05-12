@@ -86,7 +86,7 @@ public class SeatController {
                     @Content(schema = @Schema(implementation = Seat.class), mediaType = MediaType.APPLICATION_JSON_VALUE)
             }, description = "Seat updated successfully."),
             @ApiResponse(responseCode = "400", description = "Invalid Request"),
-            @ApiResponse(responseCode = "404", description = "Seat Not found"),
+            @ApiResponse(responseCode = "40", description = "Seat Not found"),
             @ApiResponse(responseCode = "500", description = "Server internal Error")})
     public ResponseEntity<StandardResponse<Seat>> updateSeatV1(@Valid @RequestBody Seat seat) {
         return ResponseEntity.ok(
