@@ -5,6 +5,8 @@ import co.udea.airline.api.model.jpa.model.seats.Seat;
 import java.util.Optional;
 
 public interface ISeatService {
-    public Optional<Seat> findSeatById(Long id);
-
+    //Seat save(Seat s);
+    //Seat update(Seat seat);
+    Optional<Seat> findSeatById(Long id);
+    
 }

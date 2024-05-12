@@ -79,4 +79,22 @@ public class SeatController {
         }
     }
 
+    @PutMapping("/v1/update/{id}")
+    @Operation(summary = "Update seat by id")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", content = {
+                    @Content(schema = @Schema(implementation = Seat.class), mediaType = MediaType.APPLICATION_JSON_VALUE)
+            }, description = "Seat updated successfully."),
+            @ApiResponse(responseCode = "400", description = "Invalid Request"),
+            @ApiResponse(responseCode = "404", description = "Seat Not found"),
+            @ApiResponse(responseCode = "500", description = "Server internal Error")})
+    public ResponseEntity<StandardResponse<Seat>> updateSeatV1(@Valid @RequestBody Seat seat) {
+        return ResponseEntity.ok(
+                new StandardResponse<>(StandardResponse.StatusStandardResponse.OK,
+                        messages.get("seat.update.successful"),
+                        seatService.update(seat)
+                )
+        );
+    }
+
 }
