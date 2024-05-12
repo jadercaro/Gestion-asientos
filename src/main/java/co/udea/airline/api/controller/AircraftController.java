@@ -45,6 +45,7 @@ public class AircraftController {
                     @Content(schema = @Schema(implementation = Aircraft.class), mediaType = MediaType.APPLICATION_JSON_VALUE)
             }, description = "El avion fue guardado exitosamente"),
             @ApiResponse(responseCode = "400", description = "La petición es inválida"),
+            @ApiResponse(responseCode = "409", description = "Duplicado"),
             @ApiResponse(responseCode = "500", description = "Error interno al procesar la respuesta")})
     public ResponseEntity<StandardResponse<Aircraft>> save(@Valid @RequestBody Aircraft aircraft) {
         return ResponseEntity.ok(new StandardResponse<>(StandardResponse.StatusStandardResponse.OK,
@@ -59,6 +60,7 @@ public class AircraftController {
                     @Content(schema = @Schema(implementation = List.class), mediaType = MediaType.APPLICATION_JSON_VALUE)
             }, description = "Los aviones fueron consultados exitosamente"),
             @ApiResponse(responseCode = "400", description = "La petición es inválida"),
+            @ApiResponse(responseCode = "409", description = "Duplicado"),
             @ApiResponse(responseCode = "500", description = "Error interno al procesar la respuesta")})
     public ResponseEntity<StandardResponse<List<Aircraft>>> findAll() {
         return ResponseEntity.ok(new StandardResponse<>(StandardResponse.StatusStandardResponse.OK,
